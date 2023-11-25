@@ -1,6 +1,6 @@
 import sqlite3
 """ Create a database table to store books """
-def create_table():# Define the function
+def create_book_table():# Define the function
     db = sqlite3.connect('book_database')# Connect to the database
     cursor = db.cursor()# Get a cursor object
 
@@ -27,7 +27,7 @@ def create_table():# Define the function
     db.close() 
 
 """ Add a new book to the database using the function defined below """
-def enter_book():
+def enter_book_info():
     try:
         book_title = input("Please enter the title of the book: ").lower() # Ask the user to enter the book title
         book_author = input("Please enter the name and surname of the author of the book: ").lower() # Ask the user to enter the book author
@@ -58,7 +58,7 @@ def enter_book():
     db.close()
 
 """ Update an existing book in the database using the function defined below """
-def update_book():
+def update_book_info():
     try:
         book_id = int(input("Enter book ID to update: "))# ask the user to enter the book ID
         if book_id <= 0:# check if the book ID is valid
@@ -149,7 +149,7 @@ def search_books():
     db.close()
 
 """ Display all books in the database using the function below """
-def print_books():
+def print_all_books():
     db = sqlite3.connect('book_database')
     cursor = db.cursor()
 
@@ -166,7 +166,7 @@ def print_books():
 
 """Main Menu"""  
 if __name__ == '__main__':# if the user runs the program directly
-    create_table()# call the create_table function
+    create_book_table()# call the create_table function
 
 while True:# while the program is running
 
@@ -180,10 +180,10 @@ while True:# while the program is running
 : ''') # Ask the user to select an option, the option will call the corresponding function
 
     if menu == '1':1
-        enter_book() 
+        enter_book_info() 
 
     elif menu == '2': 
-        update_book()
+        update_book_info()
         
     elif menu == '3': 
         delete_book()
@@ -192,7 +192,7 @@ while True:# while the program is running
         search_books()
 
     elif menu == '5': 
-        print_books()
+        print_all_books()
         
     elif menu == '0': 
         print('You are exiting the database, goodbye!!!')
